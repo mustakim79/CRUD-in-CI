@@ -18,10 +18,22 @@
         <?php
         $session = session();
         if ($session->has('user')) :
-            echo  "<h1>Welcome " . $session->get('user') . "</h1>";
         ?>
-        <a href="<?= route_to('logout') ?>" class="btn btn-outline-primary">Logout</a>
+
         <?php
+            $session = session();
+            if ($session->has('msg')) :
+            ?>
+        <div class="alert alert-primary" role="alert">
+            <?= $session->getFlashdata('msg') ?>
+        </div>
+        <?php
+            endif;
+            ?>
+        <?php
+            echo  "<h1>Welcome " . $session->get('user') . "</h1>";
+            echo '<a href="' . route_to("logout") . '" class="btn btn-outline-primary">Logout</a><br>';
+            echo '<a href="' . route_to("Update") . '" class="btn btn-outline-primary">Update</a>';
         else :
             echo "<h1>Login Please</h1>";
         ?>

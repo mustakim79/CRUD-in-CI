@@ -36,9 +36,7 @@ $routes->setAutoRoute(true);
 $routes->get('/',  function () {
     return view('home');
 });
-$routes->get('/home', function () {
-    return view('home');
-});
+$routes->get('/home', "Home::");
 $routes->get('/login', 'Home::login');
 $routes->match(['get', 'post'], '/check', 'Home::Check_Login');
 $routes->post('/signup', 'Home::SignUp');
@@ -49,7 +47,10 @@ $routes->get('gd', function () {
     return redirect()->to('/Home/Getdata');
 });
 $routes->get('logout', 'Home::Logout');
-
+$routes->get('Update', 'Home::Update');
+$routes->post('UpdateData', 'Home::UpdateData');
+$routes->post('Forgotpass', 'Home::Forgotpass');
+$routes->get('resetpass', 'Home::resetpass');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
